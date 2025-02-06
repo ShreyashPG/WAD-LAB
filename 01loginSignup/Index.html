@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Login & Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 350px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:disabled {
+            background: gray;
+            cursor: not-allowed;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        @media (max-width: 400px) {
+            .container {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 id="form-title">Signup</h2>
+        <p class="error" id="error-msg"></p>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button onclick="handleAuth()" id="submit-btn">Submit</button>
+        <p id="toggle-form">Already have an account? <a href="#" onclick="toggleForm()">Login</a></p>
+    </div>
+
+    <script>
+        let isSignup = true;
+
+        function toggleForm() {
+            isSignup = !isSignup;
+            document.getElementById('form-title').textContent = isSignup ? 'Signup' : 'Login';
+            document.getElementById('toggle-form').innerHTML = isSignup ? 
+                'Already have an account? <a href="#" onclick="toggleForm()">Login</a>' : 
+                'Don\'t have an account? <a href="#" onclick="toggleForm()">Signup</a>';
+            document.getElementById('error-msg').textContent = '';
+        }
+
+        function handleAuth() {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorMsg = document.getElementById('error-msg');
+            const submitButton = document.getElementById('submit-btn');
+
+            errorMsg.textContent = '';
+            submitButton.textContent = 'Processing...';
+            submitButton.disabled = true;
+
+            if (username === '' || password === '') {
+                errorMsg.textContent = 'All fields are required';
+                resetButton();
+                return;
+            }
+            if (password.length < 6) {
+                errorMsg.textContent = 'Password must be at least 6 characters';
+                resetButton();
+                return;
+            }
+
+            // Simulate AJAX request
+            setTimeout(() => {
+                const response = simulateServer(username, password);
+                if (response.success) {
+                    alert(response.message);
+                    if (isSignup) toggleForm();
+                } else {
+                    errorMsg.textContent = response.message;
+                }
+                resetButton();
+            }, 1000);
+        }
+
+        function resetButton() {
+            document.getElementById('submit-btn').textContent = 'Submit';
+            document.getElementById('submit-btn').disabled = false;
+        }
+
+        function simulateServer(username, password) {
+            if (isSignup) {
+                if (localStorage.getItem(username)) {
+                    return { success: false, message: 'User already exists' };
+                } else {
+                    localStorage.setItem(username, JSON.stringify({ username, password }));
+                    return { success: true, message: 'User registered successfully!' };
+                }
+            } else {
+                const user = JSON.parse(localStorage.getItem(username));
+                if (!user || user.password !== password) {
+                    return { success: false, message: 'Invalid username or password' };
+                } else {
+                    window.location.href = 'welcome.html';
+                    return { success: true, message: 'Login successful!' };
+                }
+            }
+        }
+    </script>
+</body>
+</html>
