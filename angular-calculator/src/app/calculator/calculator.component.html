@@ -1,0 +1,27 @@
+
+<div class="calculator">
+    <h2>Angular Calculator</h2>
+    
+    <div class="input-group">
+      <label for="number1">First Number:</label>
+      <input type="number" id="number1" [(ngModel)]="number1" (input)="calculate()">
+    </div>
+    
+    <div class="operation-selector">
+      <select [(ngModel)]="operation" (change)="calculate()">
+        <option value="+">Addition (+)</option>
+        <option value="-">Subtraction (-)</option>
+        <option value="*">Multiplication (*)</option>
+        <option value="/">Division (/)</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label for="number2">Second Number:</label>
+      <input type="number" id="number2" [(ngModel)]="number2" (input)="calculate()">
+    </div>
+    
+    <div class="result">
+      <h3>Result: {{result}}</h3>
+    </div>
+  </div>
