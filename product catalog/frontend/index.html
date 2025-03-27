@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Catalog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Our Products</h1>
+  </header>
+  
+  <main>
+    <div class="filter-controls">
+      <input type="text" id="search" placeholder="Search products...">
+      <select  id="sort">
+        <option value="default">Sort by</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="name-asc">Name: A to Z</option>
+        <option value="name-desc">Name: Z to A</option>
+      </select>
+    </div>
+    
+    <div id="products-container" class="products-grid"></div>
+    
+    <div id="loading" class="loading">Loading products...</div>
+    <div id="error" class="error"></div>
+  </main>
+  
+  <footer>
+    <p>&copy; 2023 Product Catalog</p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>

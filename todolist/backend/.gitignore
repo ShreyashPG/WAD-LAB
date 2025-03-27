@@ -1,0 +1,28 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Build directories
+dist/
+build/
+out/
+.next/
+
+# Cache directories
+.cache/
+
+# IDE specific files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.s

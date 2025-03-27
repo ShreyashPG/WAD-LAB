@@ -1,0 +1,23 @@
+[
+    {
+      "id": 1,
+      "name": "Wireless Headphones",
+      "price": 99.99,
+      "image": "https://example.com/headphones.jpg",
+      "description": "Noise-cancelling wireless headphones with 30hr battery"
+    },
+    {
+      "id": 2,
+      "name": "Smart Watch",
+      "price": 199.99,
+      "image": "https://example.com/smartwatch.jpg",
+      "description": "Fitness tracking and notifications"
+    },
+    {
+      "id": 3,
+      "name": "Bluetooth Speaker",
+      "price": 59.99,
+      "image": "https://example.com/speaker.jpg",
+      "description": "Portable waterproof speaker"
+    }
+  ]
