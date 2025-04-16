@@ -1,0 +1,16 @@
+<h1><%= name %></h1>
+<p><%= description %></p>
+
+<section class="artwork-grid">
+    <% artworks.forEach(artwork => { %>
+        <div class="artwork-item">
+            <img data-src="/images/<%= artwork.image %>" alt="<%= artwork.title %>" class="lazy-load">
+            <div class="artwork-info">
+                <h3><%= artwork.title %></h3>
+                <p>By <%= artwork.artist %></p>
+                <p><%= artwork.medium %></p>
+                <p class="price"><%= artwork.price %></p>
+            </div>
+        </div>
+    <% }); %>
+</section>

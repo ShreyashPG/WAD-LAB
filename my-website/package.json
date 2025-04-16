@@ -1,0 +1,13 @@
+{
+  "name": "restaurant-gallery-website",
+  "version": "1.0.0",
+  "description": "A static website for restaurants and art galleries",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "ejs": "^3.1.9"
+  }
+}

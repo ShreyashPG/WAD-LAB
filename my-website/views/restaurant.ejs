@@ -1,0 +1,16 @@
+<h1><%= name %></h1>
+<p><%= description %></p>
+
+<section class="menu">
+    <h2>Our Menu</h2>
+    <% menuItems.forEach(item => { %>
+        <div class="menu-item">
+            <img data-src="/images/<%= item.image %>" alt="<%= item.name %>" class="lazy-load">
+            <div class="item-details">
+                <h3><%= item.name %></h3>
+                <p><%= item.description %></p>
+                <p class="price"><%= item.price %></p>
+            </div>
+        </div>
+    <% }); %>
+</section>
