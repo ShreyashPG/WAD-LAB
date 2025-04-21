@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>{{ title }}</h1>
+
+  <div>
+    <input [(ngModel)]="newItem" placeholder="Enter new item" />
+    <button (click)="addItem()">Add Item</button>
+  </div>
+
+  <ul>
+    <li *ngFor="let item of items; let i = index">
+      {{ item }}
+      <button class="remove-btn" (click)="removeItem(i)">Remove</button>
+    </li>
+  </ul>
+</div>
